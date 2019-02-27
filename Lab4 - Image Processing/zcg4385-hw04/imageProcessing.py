@@ -7,11 +7,11 @@ import numpy as np
 from scipy import ndimage
 from PIL import Image
 
-boat = np.array(Image.open("./images/boat.512.tiff"))
-clock = np.array(Image.open("./images/clock-5.1.12.tiff"))
-darin = np.array(Image.open("./images/darinGrayNoise.jpg"))
-man = np.array(Image.open("./images/man-5.3.01.tiff"))
-tank = np.array(Image.open("./images/tank-7.1.07.tiff"))
+boat = np.array(Image.open("boat.512.tiff"))
+clock = np.array(Image.open("clock-5.1.12.tiff"))
+darin = np.array(Image.open("darinGrayNoise.jpg"))
+man = np.array(Image.open("man-5.3.01.tiff"))
+tank = np.array(Image.open("tank-7.1.07.tiff"))
 
 
 def lowpass_filter(img, n=10):
