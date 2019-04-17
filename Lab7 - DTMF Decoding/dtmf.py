@@ -60,7 +60,9 @@ def readCSV(name, samplesPerTone):
         reader = csv.reader(csvfile, delimiter=',')
         for row in reader:
             rawData = [float(col) for col in row]
-            plt.figure(0)
+            plt.figure(1)
+            plt.ylabel('Frequency [Hz]')
+            plt.xlabel('Time [sec]')
             f, t, Sxx = spectrogram(np.asarray(rawData), 8000)
             plt.pcolormesh(t, f, Sxx)
     data = [[] for _ in range(int(len(row) / samplesPerTone))]
@@ -80,10 +82,12 @@ def produceFilter(freq, L, fs):
 
 def createFilterDictionary(frequencies, L, fs):
     filters = {}
+    plt.figure(0)
+    plt.xlabel('Hertz')
+    plt.suptitle('Frequency Responses of Bandpass Filters')
     for freq in frequencies:
         filters[freq] = produceFilter(freq, L, fs)
-        plt.figure(1)
-        x, y = freqz(filters[freq])
+        x, y = freqz(filters[freq], fs=fs)
         plt.plot(x, abs(y))
     return filters
 
